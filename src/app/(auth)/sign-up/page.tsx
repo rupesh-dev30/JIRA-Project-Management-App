@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react'
+import SignUpCard from '@/features/auth/components/SignUpCard';
 
 export default function SignUpPage() {
   return (
-    <div>Sign Up Page</div>
+    <SignUpCard />
   )
 }

@@ -24,26 +24,24 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-const formSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email(),
-  password: z.string().min(8, "Minimum 8 characters required"),
-});
-
-const onSubmit = (values: z.infer<typeof formSchema>) => {
-  console.log({ values });
-};
+import { registerSchema } from "../schemas";
+import { useRegister } from "../api/useRegister";
 
 export default function SignUpCard() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const { mutate } = useRegister();
+
+  const form = useForm<z.infer<typeof registerSchema>>({
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       name: "",
       email: "",
       password: "",
     },
   });
+
+  const onSubmit = (values: z.infer<typeof registerSchema>) => {
+    mutate({ json: values });
+  };
 
   return (
     <Card className="w-full h-full md:w-[487px] border-none shadow-none">
@@ -52,11 +50,15 @@ export default function SignUpCard() {
         <CardDescription>
           By signing up, you agree to our{" "}
           <Link href="/privacy">
-            <span className="text-blue-700 hover:underline">Privacy Policy</span>
+            <span className="text-blue-700 hover:underline">
+              Privacy Policy
+            </span>
           </Link>{" "}
           and{" "}
           <Link href="/terms">
-            <span className="text-blue-700 hover:underline">Terms of Service</span>
+            <span className="text-blue-700 hover:underline">
+              Terms of Service
+            </span>
           </Link>
         </CardDescription>
       </CardHeader>

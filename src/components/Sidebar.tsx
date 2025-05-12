@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import DottedSeparator from "./DottedSeparator";
 import Navigation from "./Navigation";
+import WorkspaceSwitcher from "./WorkspaceSwitcher";
 
 export default function Sidebar() {
   return (
@@ -11,7 +12,11 @@ export default function Sidebar() {
         <Image src="/jira-logo.png" height={50} width={120} alt="logo" />
       </Link>
 
-      <DottedSeparator className="my-4"/>
+      <DottedSeparator className="my-4" />
+
+      <WorkspaceSwitcher />
+
+      <DottedSeparator className="my-4" />
 
       <Navigation />
     </aside>

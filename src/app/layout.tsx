@@ -1,3 +1,4 @@
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -24,7 +25,7 @@ export default function RootLayout({
       <body className={cn(inter.className, "antialiased min-h-screen")}>
         <Providers>
           <Toaster />
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
         </Providers>
       </body>
     </html>

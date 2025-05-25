@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { useMedia } from "react-use";
-import { Dialog, DialogContent } from "./ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 import { Drawer, DrawerContent } from "./ui/drawer";
 
 interface ResponsiveModalProps {
@@ -20,6 +20,7 @@ export default function ResponsiveModal({
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogTitle>Workspace Settings</DialogTitle>
         <DialogContent className="w-full sm:max-w-lg p-0 border-none overflow-y-auto hide-scrollbar max-h-[85vh]">
           {children}
         </DialogContent>
